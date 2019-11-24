@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="page padding green-50 has-header has-sub-header">
+        <!--Header-->
+        <div class="header green-900">
+            <div class="left">
+                <button class="icon ion-ios-arrow-back" onclick="backPage()"></button><!--Back arrow-->
+            </div>
+            <h1>SunRahat</h1>
+        </div>
+        <form>
+            <div class="list">
+                <div class="item label-fixed">
+                    <label>Name *</label>
+                    <input id="contactName"type="text" required>
+                </div>
+                <div class="item label-fixed">
+                    <label>Email *</label>
+                    <input id="contactEmail" type="email" required>
+                </div>
+                <div class="item label-fixed">
+                    <label>Subject *</label>
+                    <input id="contactSubject" type="text" required>
+                </div>
+                <div class="item">
+                    <button class="radius full green-800" onclick="submitMessage()">Submit message</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

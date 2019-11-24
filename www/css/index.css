@@ -1,0 +1,8 @@
+progress {
+    width: 100%
+}
+
+#tabCalculator, #tabGoals {
+    max-height: calc(100% - 55px);
+    overflow-y: auto;
+}

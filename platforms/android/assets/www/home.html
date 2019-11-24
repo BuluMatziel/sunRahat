@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <!--Hambuger menu-->
+    <div class="menu white" id="myMenu">
+        <div class="list no-border">
+            <div class="item green-900">
+                <h1 id="userTitle">Jeanette Fletcher</h1>
+            </div>
+            <a class="item" onclick="openPage('yourHelp')">
+                <div class="left">
+                    <i class="icon ion-alert"></i>
+                </div>
+                <h1>YourHelp</h1>
+            </a>
+            <a class="item" onclick="openPage('saveMoney')">
+                <div class="left">
+                    <i class="icon ion-social-euro-outline"></i>
+                </div>
+                <h1>Save more money</h1>
+            </a>
+            <a class="item" onclick="openPage('aboutUs')">
+                <div class="left">
+                    <i class="icon ion-ios-information-outline"></i>
+                </div>
+                <h1>About us</h1>
+            </a>
+            <a onclick="closeMenu('myMenu')" class="item">
+                <div class="left">
+                    <i class="icon ion-ios-close-outline"></i>
+                </div>
+                <h1>Close menu</h1>
+            </a>
+            <button class="green-900 radius full footer" onclick="backPage()">Sign out</button>
+        </div>
+    </div>
+    <!--Hamburger menu code ends-->
+    <!--Dot menu code-->
+    <div class="popover" id="popover1">
+        <div class="list">
+            <div class="item" onclick="openPage('aboutApp')"><h1 class="left">About this app</h1></div>
+            <div class="item" onclick="openPage('contact')"><h1 class="left">Contact us</h1></div>
+        </div>
+    </div>
+    <!--Dot menu code ends-->
+    <div class="page padding green-50 has-header has-sub-header">
+        <!--Header-->
+        <div class="header green-900">
+            <div class="left">
+                <button class="icon ion-navicon" onclick="openMenu('myMenu'), displayUser()"></button><!--Opens the hamburger menu-->
+            </div>
+            <h1>SunRahat</h1>
+            <div class="right">
+                <button class="icon ion-android-more-vertical" onclick="openPopover('popover1')"></button><!--Opens dot menu-->
+            </div>
+        </div>
+        <!--Tabs (button group in the footer)-->
+        <div class="footer green-900 shadow tab buttons-group full">
+            <button class="icon ion-android-person active" onclick="openTab('tabProfile')">Profile</button>
+            <button class="icon ion-android-list" onclick="openTab('tabCalculator'), openTab('tabExpense')">Calculator</button>
+            <button class="icon ion-android-people" onclick="openTab('tabGoals')">Saving goals</button>
+        </div>
+        <!--Profile tab-->
+        <div class="tab-content active" id="tabProfile">
+            <h2 class="text-strong padding text-green-900 text-big align-center">Welcome to SunRahat!</h2>
+            <div class="list radius grey-300">
+                <div class="item green-100 text-green mark border-green">
+                    <h2 class="text-strong">Income</h2>
+                    <div class="right">
+                        <h2 class="text-strong" id="income">0.00</h2>
+                        <i class="icon-small ion-social-euro"></i>
+                    </div>
+                </div>
+                <div class="item red-100 text-red mark border-red">
+                    <h2 class="text-strong">Expenses</h2>
+                    <div class="right">
+                        <h2 class="text-strong" id="expense">0.00</h2>
+                        <i class="icon-small ion-social-euro"></i>
+                    </div>
+                </div>
+                <div class="item yellow-100 mark border-yellow margin-button">
+                    <h2 class="text-strong">Savings</h2>
+                    <div class="right">
+                        <h2 class="text-strong" id="savings">0.00</h2>
+                        <i class="icon-small ion-social-euro"></i>
+                    </div>
+                </div>
+                <div class="item blue-100 text-blue mark border-blue">
+                    <h2 class="text-strong">Balance</h2>
+                    <div class="right">
+                        <h2 class="text-strong" id="balance">0.00</h2>
+                        <i class="icon-small ion-social-euro"></i>
+                    </div>
+                </div>
+                <div class="item">
+                    <button class="full radius green-800" onclick="appState()">Reload data</button>
+                </div>
+            </div>
+
+        </div>
+        <!--Calculator tab-->
+        <div class="tab-content align-center" id="tabCalculator">
+            <h2 class="text-strong padding text-green-900 text-big">Calculator</h2>
+            <div class="border-grey-300">
+                <div class="green shadow tab">
+                    <button class="icon ion-android-person active light-green-100" onclick="openTab('tabExpense')" id="tabLoginButton">Add expense</button>
+                    <button class="icon ion-android-list light-green-100" onclick="openTab('tabIncome')" id="tabSignupButton">Add income</button>
+                </div>
+                <div class="tab-content active" id="tabExpense">
+                    <div class="vertical-align-center row border-grey-300">
+                        <div class="col padding">
+                            <h2>Date</h2>
+                        </div>
+                        <div class="padding col-67 border-grey-300">
+                            <input type="date" id="expenseDate">
+                        </div>
+                    </div>
+                    <div class="vertical-align-center row border-grey-300">
+                        <div class="col padding">
+                            <h2>Category</h2>
+                        </div>
+                        <div class="padding col-67 border-grey-300">
+                            <select id="expenseCategory">
+                                <option>Not selected</option>
+                                <option>Groceries</option>
+                                <option>Travel</option>
+                                <option>Clothes</option>
+                                <option>Fuel</option>
+                                <option>Gifts</option>
+                                <option>Hobbies</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="vertical-align-center row border-grey-300">
+                        <div class="col padding">
+                            <h2>Amount</h2>
+                        </div>
+                        <div class="padding col-67 border-grey-300">
+                            <input type="number" id="expenseAmount">
+                        </div>
+                    </div>
+                    <button class="radius full green-800" onclick="createExpense()">Add expense</button>
+                </div>
+                <div class="tab-content" id="tabIncome">
+                    <div class="vertical-align-center row border-grey-300">
+                        <div class="col padding">
+                            <h2>Date</h2>
+                        </div>
+                        <div class="padding col-67 border-grey-300">
+                            <input type="date" id="incomeDate">
+                        </div>
+                    </div>
+                    <div class="vertical-align-center row border-grey-300">
+                        <div class="col padding">
+                            <h2>Category</h2>
+                        </div>
+                        <div class="padding col-67 border-grey-300">
+                            <select id="incomeCategory">
+                                <option>Not selected</option>
+                                <option>Salary</option>
+                                <option>Selling stuff</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="vertical-align-center row border-grey-300">
+                        <div class="col padding">
+                            <h2>Amount</h2>
+                        </div>
+                        <div class="padding col-67 border-grey-300">
+                            <input type="number" id="incomeAmount">
+                        </div>
+                    </div>
+                    <button class="radius full green-800" onclick="createIncome()">Add income</button>
+                </div>
+                <!--Transactions-->
+                <div class="space"></div>
+                <div id="transactionList">
+                    <div class="row border-grey-500">
+                        <div class="item col">
+                            <h1 class="text-strong">Date</h1>
+                        </div>
+                        <div class="item col">
+                            <h1 class="text-strong">Category</h1>
+                        </div>
+                        <div class="item col">
+                            <h1 class="text-strong">Amount</h1>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--Saving goals tab-->
+        <div class="tab-content align-center" id="tabGoals">
+            <h2 class="text-strong padding text-green-900 text-big align-center">Your saving goals</h2>
+            <div class="vertical-align-center row border-grey-300">
+                <div class="col padding">
+                    <h2 class="text-strong">Goal</h2>
+                </div>
+                <div class="padding col-67 border-grey-300">
+                    <input type="text" placeholder="What are you saving for?" id="savingGoal">
+                </div>
+            </div>
+            <div class="vertical-align-center row border-grey-300">
+                <div class="col padding">
+                    <h2 class="text-strong">Amount</h2>
+                </div>
+                <div class="padding col-67 border-grey-300">
+                    <input type="number" placeholder="How much do you need to save?" id="savingAmount">
+                </div>
+            </div>
+            <button class="radius full green-800" onclick="createSaving()">Add new saving goal</button>
+            <div class="space"></div>
+            <!--Added goal will be here-->
+            <div id="goalList"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/home.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="mobileui/mobileui.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

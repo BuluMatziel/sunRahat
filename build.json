@@ -1,0 +1,11 @@
+﻿{
+  "android": {
+    "release": {
+      "keystore": "c:\\dev\\sunRahatKey.keystore",
+      "storePassword": "sr1337",
+      "alias": "sunRahat",
+      "password": "sr1337",
+      "keystoreType": ""
+    }
+  }
+}
